@@ -2,9 +2,9 @@
 
 class Dipendente {
 
-  private $nome;
-  private $cognome;
-  private $codiceFiscale;
+  protected $nome;
+  protected $cognome;
+  protected $codiceFiscale;
 
   public function __construct($_nome, $_cognome, $_codiceFiscale){
     $this->nome = $_nome;
@@ -14,9 +14,9 @@ class Dipendente {
 
   public function setNome($_nome){
     if(empty($_nome)){
-      die('Non hai inserito il nome');
+      throw new Exception('Non hai inserito il nome');
     } else if (is_numeric($_nome)){
-      die('Non è il figlio di Elon Musk');
+      throw new Exception('Non è il figlio di Elon Musk');
     } else {
       $this->nome = $_nome;
     }
@@ -28,9 +28,9 @@ class Dipendente {
 
   public function setCognome($_cognome){
     if (empty($_cognome)){
-      die('Non hai inserito il cognome');
+      throw new Exception('Non hai inserito il cognome');
     } else if (is_numeric($_cognome)){
-      die('Non è il figlio di Elon Musk');
+      throw new Exception('Non è il figlio di Elon Musk');
     } else {
       $this->cognome = $_cognome;
     }
@@ -42,9 +42,9 @@ class Dipendente {
 
   public function setCodiceFiscale($_codiceFiscale){
     if (empty($_codiceFiscale)){
-      die('Non hai inserito il codice fiscale');
+      throw new Exception('Non hai inserito il codice fiscale');
     } else if (strlen($_codiceFiscale) != 16){
-      die('Il codice fiscale deve essere costituito da 16 caratteri');
+      throw new Exception('Il codice fiscale deve essere costituito da 16 caratteri');
     } else {
       $this->codiceFiscale = $_codiceFiscale;
     }
@@ -53,4 +53,7 @@ class Dipendente {
   public function getCodiceFiscale(){
     return $this->codiceFiscale;
   }
+
+
+
 }

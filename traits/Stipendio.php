@@ -4,8 +4,8 @@
 trait Stipendio
 {
   public $oreLavorate;
-  private $pagaOraria = 25;
-  private $stipendio;
+  protected $pagaOraria = 25;
+  protected $stipendio;
 
   public function __construct($_nome, $_cognome, $_codiceFiscale, $_ruolo, $_oreLavorate){
     parent::__construct($_nome, $_cognome, $_codiceFiscale, $_ruolo);
@@ -14,9 +14,9 @@ trait Stipendio
 
   public function setOreLavorate($_oreLavorate){
     if (empty($_oreLavorate)){
-      die ('Non hai inserito nessun numero');
+      throw new Exception('Non hai inserito nessun numero');
     } else if (!is_numeric($_oreLavorate)){
-      die('Le ore mensili devono essere un numero');
+      throw new Exception('Le ore mensili devono essere un numero');
     } else {
       $this->oreLavorate = $_oreLavorate;
     }
@@ -30,5 +30,6 @@ trait Stipendio
     $this->stipendio = $this->pagaOraria * $this->oreLavorate;
     return $this->stipendio;
   }
+
 
 }

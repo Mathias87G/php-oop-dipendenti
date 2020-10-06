@@ -6,10 +6,37 @@ require_once 'classes/Dettagli.php';
 
 $dipendente1 = new Dettagli('a', 'b', '1234567890123456','Gioppino', 1);
 
-$dipendente1->setNome('Mario');
-$dipendente1->setCognome('Vitalone');
-$dipendente1->setCodiceFiscale('vtlmra65m25o908x');
-$dipendente1->setRuolo('Spazzino');
-$dipendente1->setOreLavorate(160);
+try {
+  $dipendente1->setNome('Mario');
+} catch (Exception $e) {
+  echo 'Eccezione: ' . $e->getMessage();
+}
+
+try {
+  $dipendente1->setCognome('Vitalone');
+} catch (Exception $e) {
+  echo 'Eccezione: ' . $e->getMessage();
+}
+
+try {
+  $dipendente1->setCodiceFiscale('vt1mra65m25o908x');
+} catch (Exception $e) {
+  echo 'Eccezione: ' . $e->getMessage();
+}
+
+try {
+  $dipendente1->setRuolo('Operaio');
+} catch (Exception $e) {
+  echo 'Eccezione: ' . $e->getMessage();
+}
+
+try {
+  $dipendente1->setOreLavorate(50);
+} catch (Exception $e) {
+  echo 'Eccezione: ' . $e->getMessage();
+}
+
 $dipendente1->calcoloStipendio($dipendente1->oreLavorate);
+
+echo $dipendente1;
 var_dump($dipendente1);

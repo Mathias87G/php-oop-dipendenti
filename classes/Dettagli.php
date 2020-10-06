@@ -1,5 +1,4 @@
 <?php
-require_once 'Dipendente.php';
 require_once __DIR__.'/../traits/Stipendio.php';
 
 Class Dettagli extends Dipendente {
@@ -12,7 +11,7 @@ Class Dettagli extends Dipendente {
 
   public function setRuolo($_ruolo){
     if(empty($_ruolo)){
-      die('Non hai inserito il nome');
+      throw new Exception('Non hai inserito il ruolo');
     } else {
       $this->ruolo = $_ruolo;
     }
@@ -21,4 +20,11 @@ Class Dettagli extends Dipendente {
   public function getRuolo(){
     return $this->ruolo;
   }
+
+  public function __toString(){
+    return "nome: " . $this->nome . "<br> cognome:" . $this->cognome .
+    "<br> codice fiscale:" . $this->codiceFiscale .
+    "<br> ruolo: " . $this->ruolo . "<br> stipendio: " . $this->stipendio;
+  }
+
 }
